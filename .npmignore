@@ -1,7 +1,7 @@
 # npm
 node_modules
 package-lock.json
-lib
+src
 
 # Coverage
 coverage
@@ -16,4 +16,4 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 *~
-.vscode
+.*

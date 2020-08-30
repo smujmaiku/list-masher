@@ -14,7 +14,18 @@ Mash your list!
 
 ### encode
 
+```js
+encode(['some', 'mock', '', 'data']));
+// 'BABzbQBkb29hbWN0ZWth'
+```
+
 ### decode
+
+```js
+decode('BABzbQBkb29hbWN0ZWth');
+// ['some', 'mock', '', 'data']
+]
+```
 
 ## License
 

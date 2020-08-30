@@ -5,12 +5,7 @@
  * MIT Licensed
  */
 
-/**
- * Trim buffer end
- * @param {Buffer} buffer
- * @returns {Buffer}
- */
-function bufferTrimEnd(buffer) {
+export function bufferTrimEnd(buffer: Buffer): Buffer {
 	while (buffer.length > 0 && buffer.readInt8(buffer.length - 1) === 0) {
 		buffer = buffer.slice(0, -1);
 	}
@@ -18,14 +13,11 @@ function bufferTrimEnd(buffer) {
 	return buffer;
 }
 
-/**
- * Encode list
- * @param {Array(string)} list
- * @param {Object?} opts
- * @param {boolean} opts.skipSize
- * @returns {string}
- */
-function encode(list, opts = {}) {
+interface EncodeProps {
+	skipSize?: boolean;
+}
+
+export function encode(list: string[], opts: EncodeProps = {}): string {
 	const {
 		skipSize = false,
 	} = opts;
@@ -54,15 +46,9 @@ function encode(list, opts = {}) {
 	}
 
 	return buffer.toString('base64').replace(/=+$/, '');
-};
+}
 
-/**
- * Decode mash
- * @param {string} code
- * @param {number?} size
- * @returns {Array}
- */
-function decode(code, size) {
+export function decode(code: string, size?: number): string[] {
 	let buffer = Buffer.from(code, 'base64');
 
 	if (size === undefined) {
@@ -70,7 +56,7 @@ function decode(code, size) {
 		buffer = buffer.slice(2);
 	}
 
-	const buffers = [];
+	const buffers: Buffer[] = [];
 	while (buffers.length < size) buffers.push(Buffer.from([]));
 
 	let index = -1;
@@ -95,7 +81,3 @@ function decode(code, size) {
 
 	return buffers.map(buf => bufferTrimEnd(buf).toString());
 }
-
-exports.bufferTrimEnd = bufferTrimEnd;
-exports.encode = encode;
-exports.decode = decode;
