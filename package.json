@@ -1,6 +1,6 @@
 {
   "name": "list-masher",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Smash a list of strings together",
   "main": "lib/list-masher.js",
   "types": "lib/list-masher.d.ts",
