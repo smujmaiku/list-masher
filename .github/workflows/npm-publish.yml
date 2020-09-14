@@ -14,6 +14,6 @@ jobs:
           node-version: 12
       - run: npm i
       - run: npm run build
-      - run: npm publish
+      - run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}} # https://www.npmjs.com/settings/$username/tokens
